@@ -10,7 +10,7 @@ game_1_li.append(game_1_h2);
 
 const game_2_li = document.createElement('li');
 const game_2_h2 = document.createElement('h2');
-game_2_h2.textContent = 'Juego 2';
+game_2_h2.textContent = 'Whac A Mole';
 game_2_li.append(game_2_h2);
 
 const game_3_li = document.createElement('li');

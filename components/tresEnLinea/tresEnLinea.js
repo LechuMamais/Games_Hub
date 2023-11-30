@@ -1,8 +1,6 @@
 import { arrayGrilla } from '../../utils/tresEnLinea/arrayGrilla';
-import { arrayJugadores } from '../../utils/tresEnLinea/arrayJugadores';
 import { handleClick } from '../../utils/tresEnLinea/handleClick';
 import { mostrarStatusJugadores } from '../../utils/tresEnLinea/mostrarStatusJugadores';
-import { mostrarTurno } from '../../utils/tresEnLinea/mostrarTurno';
 import './style.css'
 
 

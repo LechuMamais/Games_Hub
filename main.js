@@ -1,6 +1,6 @@
 import gamesList from './components/header/header';
 import { tresEnLinea } from './components/tresEnLinea/tresEnLinea';
-import { handleClick } from './utils/tresEnLinea/handleClick';
+import { whacAMole } from './components/whacAMole/whacAMole';
 
 import './style.css'
 
@@ -13,7 +13,9 @@ const game_section = document.createElement('section');
 game_section.id = 'game_section';
 
 divApp.append(game_section);
-tresEnLinea();
 
 
+//tresEnLinea();
+
+whacAMole();
 
