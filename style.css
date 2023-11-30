@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');:root {
+
+
+  font-family: Lato, Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+  /*  Variables de Colores  */
+  --color-5: #B8336A;
+  --color-4: #C490D1;
+  --color-3: #ACACDE;
+  --color-2: #ABDAFC;
+  --color-1: #e5fcff;
+
+}
+
+* {
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  width: 100svw;
+  height: 100svh;
+  background-color: var(--color-1);
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,24 @@
+#games_ul{
+    display: flex;
+    flex-direction: row;
+    height: 10svh;
+    justify-content: space-around;
+    align-items: center;
+
+}
+#games_ul>li{
+    cursor: pointer;
+    transition: all 500ms;
+    flex-basis: 300px;
+    text-align: center;
+    border-radius: 2rem;
+    color: var(--color-5);
+}
+
+
+#games_ul>li:hover{
+    background-color: var(--color-4);
+    color: var(--color-1);
+}
+
+

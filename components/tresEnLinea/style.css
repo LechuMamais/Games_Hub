@@ -1,0 +1,84 @@
+#grilla {
+    width: 28rem;
+    height: 28rem;
+    margin: 1.5rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 9rem);
+    grid-template-rows: repeat(3, 9rem);
+    gap: 0.5rem;
+    background-color: var(--color-3);
+}
+
+.cuadrado {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: var(--color-1);
+    text-align: center;
+    font-size: 100px;
+    font-weight: 600;
+    text-shadow: 7px 3px 11px rgba(0, 0, 0, 0.42);
+    box-shadow: 8px 3px 12px -30px rgba(0, 0, 0, 0.25)inset;
+    -webkit-box-shadow: 8px 3px 12px -30px rgba(0, 0, 0, 0.25)inset;
+    -moz-box-shadow: 8px 3px 12px -30px rgba(0, 0, 0, 0.25)inset;
+}
+
+.color-jugador-uno {
+    color: var(--color-2);
+    ;
+}
+
+.color-jugador-dos {
+    color: var(--color-5);
+    ;
+}
+
+#div-jugadores {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.div-jugador {
+    height: 220px;
+    padding: 2rem;
+    transition: all 500ms;
+    flex-basis: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 120px;
+    background-color: red;
+    box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
+}
+
+#divJugador_1 {
+    background-color: transparent;
+    color: var(--color-2);
+
+}
+
+#divJugador_2 {
+    background-color: transparent;
+    color: var(--color-5);
+}
+
+.div-jugador>h3 {
+    font-size: 60px;
+    line-height: 50px;
+}
+
+.div-jugador>h4 {
+    font-size: 25px;
+}
+
+.div-jugador>p {
+    font-size: 18px;
+}
