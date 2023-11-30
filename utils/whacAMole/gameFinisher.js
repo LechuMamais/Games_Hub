@@ -1,3 +1,4 @@
+import intervaloGlovos from "./gameStarter";
 
 
 export const gameFinisher = () => {
@@ -21,6 +22,14 @@ export const gameFinisher = () => {
 
     // Lo único que me falta hacer es que dejen de salir glovos!
     // cortar el intervalo de gameStarter
+
+    // La solución fácil que se me ocurre es recargando todo el DOM
+    location.reload()
+
+    /*function detenerCreacionGlovos() {
+        clearInterval(intervaloGlovos);
+    };
+    detenerCreacionGlovos();*/
     
 
 }
