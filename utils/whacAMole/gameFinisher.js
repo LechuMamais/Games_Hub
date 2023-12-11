@@ -30,6 +30,8 @@ export const gameFinisher = () => {
         clearInterval(intervaloGlovos);
     };
     detenerCreacionGlovos();*/
+    // Otra es que el intervalo dependa de que un booleano sea true, lo chequee por cada interval, por cada glovo que va crear.
+    // y en gameFinisher cambiar el valor de ese booleano
     
 
 }

@@ -52,11 +52,4 @@ export const tresEnLinea = () => {
     mostrarStatusJugadores();
 
 
-
-
-    //mostrarTurno();
-
-
-
-
 }
