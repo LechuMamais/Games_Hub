@@ -1,6 +1,14 @@
 import { puntosJugador } from "./puntosJugador";
 
 export const mostrarPuntos = (largo)=>{
+let puntos;
+    if (largo === undefined){
+        puntos = 0
+    }else{
+        puntos = largo-3
+    }
+        
+    
     const divJugadores = document.querySelector('#div-jugadores');
     divJugadores.innerHTML = '';
     
@@ -8,7 +16,7 @@ export const mostrarPuntos = (largo)=>{
     divJugador.id = 'divJugador';
     divJugador.classList.add('div-jugador');
     divJugador.innerHTML = `
-        <h3>Puntos: ${largo}</h3>
+        <h3>Puntos: ${puntos}</h3>
     `
 
     divJugadores.append(divJugador);

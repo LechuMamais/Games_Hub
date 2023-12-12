@@ -72,16 +72,45 @@ export const gameSecuence = () => {
                     cabeza = [i, j]
                 }
                 // encontrar la cola actual
-                if (arrayGrilla[i][j].split(" ")[1] > largo) {
+
+                // Suplantando en Prueba:   
+                /*if (arrayGrilla[i][j].split(" ")[1] >= largo) {
                     console.log('Cola actual: ' + arrayGrilla[i][j].split(" "))
                     largo = arrayGrilla[i][j].split(" ")[1];
                     cola = [i, j]
-                }
+                }*/
             }
         }
-        console.log('coordenadas de la cabeza: ' + cabeza);
+
+        // Inicio prueba
+        
+
+        const resultadoMaxNum = arrayGrilla.reduce((maximoInfo, subarray, subarrayIndex) => {
+            const maximoSubarray = subarray.reduce((subarrayMaximo, cadena, cadenaIndex) => {
+              const match = cadena.match(/(\d+)$/);
+          
+              if (match) {
+                const numero = parseInt(match[1], 10);
+                if (!isNaN(numero) && numero > subarrayMaximo.valor) {
+                  return { valor: numero, ubicacion: { subarray: subarrayIndex, cadena: cadenaIndex } };
+                }
+              }
+          
+              return subarrayMaximo;
+            }, maximoInfo);
+          
+            return maximoSubarray;
+          }, { valor: -Infinity, ubicacion: { subarray: -1, cadena: -1 } });
+          largo = resultadoMaxNum.valor;
+          cola = [resultadoMaxNum.ubicacion.subarray,resultadoMaxNum.ubicacion.cadena]
+
+        //console.log('El valor máximo en el array de arrays es:', largo);
+
+        //Fin Prueba
+
+        /*console.log('coordenadas de la cabeza: ' + cabeza);
         console.log('coordenadas de la cola: ' + cola);
-        console.log('largo/puntos: ' + largo);
+        console.log('largo/puntos: ' + largo);*/
 
         // ------------------------------------------                    MOVIMIENTO                 ----------------------------------- //
 
@@ -91,18 +120,19 @@ export const gameSecuence = () => {
 
                 // Si es un elemento snake, y por lo tanto tiene un valor después del espacio
                 if (arrayGrilla[i][j].split(" ")[1]) {
+
                     // Tomamos ese numero y lo convertimos a tipo number
                     let snakeBoxNumeration = parseInt(arrayGrilla[i][j].split(" ")[1]);
-                    console.log(snakeBoxNumeration);
+                    //console.log(snakeBoxNumeration);
                     // Lo redefinimos y le sumamos 1, convirtiendolo a string
                     arrayGrilla[i][j] = arrayGrilla[i][j].split(" ")[0] + " " + (snakeBoxNumeration + 1).toString();
-                    
+
                 }
             }
         }
-        console.log(arrayGrilla);
+        
 
-        // mover la cabeza:
+        // Definimos la próxima cabeza
 
         if (direction === 'right') {
             // Si no está en el borde
@@ -161,32 +191,42 @@ export const gameSecuence = () => {
             }
         }
 
-        if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] != 'manzana') {
+        // Comprobaciones del box de PROXIMA CABEZA:
+        if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === " ") {
 
-            // Si no come manzana, borrar la cola, que ya tenemos capturadas sus coordenadas:
+            // Si está vacío, borrar la cola, que ya tenemos capturadas sus coordenadas:
             arrayGrilla[cola[0]][cola[1]] = " ";
-        } else {
-            // Si come manzana, que aparezca una nueva
+        } else if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === 'manzana') {
+            // Si come manzana, que aparezca una nueva y no borre cola.
             crearNuevaManzana();
 
+        } else {
+            // Si CHOCA CON ALGO
+            arrayGrilla[cola[0]][cola[1]] = " "; // Borramos la cola
+
+            // Momentaneamente mostramos un ALERT
+            alert('Has perdido');
+            // Y cortamos la ejecución
+            clearInterval(gameInterval);
         }
 
 
 
 
         // SI NO CHOCA O MUERE --->
+
         // Le damos el valor de proximaCabeza al array, para pintarlo
         arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] = 'snake 1'
 
 
-
+        mostrarPuntos(largo);
         pintarGrilla()
 
-        mostrarPuntos(largo);
+
 
 
     }
-    let gameInterval = setInterval(intervalSecuence, 250)
+    let gameInterval = setInterval(intervalSecuence, 150)
 
 
 
