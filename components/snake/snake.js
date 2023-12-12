@@ -1,6 +1,6 @@
-import { arrayGrilla } from '../../utils/snake/arrayGrilla';
 import { gameSecuence } from '../../utils/snake/game-secuence';
 import { mostrarPuntos } from '../../utils/snake/mostrarPuntos';
+import { pintarGrilla } from '../../utils/snake/pintarGrilla';
 import './style.css'
 
 export const snake = () => {
@@ -19,26 +19,12 @@ export const snake = () => {
     div.appendChild(startSnakeButton)
 
 
-
     // Creamos la grilla
     const grilla = document.createElement('div');
     grilla.id = 'grilla-snake';
-
-    // Y los cuadrados que la van a componer
-    for (let i = 0; i < arrayGrilla.length; i++) {
-
-        for (let j = 0; j < arrayGrilla[i].length; j++) {
-
-            let cuadradito = document.createElement("div");
-            cuadradito.id = i + "," + j;
-            cuadradito.className = "snake-box";
-
-            grilla.appendChild(cuadradito);
-        }
-    };
-
     // Mostramos la grilla
     div.appendChild(grilla);
+    pintarGrilla();
 
 
     //Mostrar estatus de Jugadores:

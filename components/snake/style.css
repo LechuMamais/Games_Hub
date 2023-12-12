@@ -1,14 +1,23 @@
 #grilla-snake{
-    width: 800px;
-    height: 600px;
+    width: 36rem;
+    height: 24rem;
     margin: 1.5rem auto;
     display: grid;
     grid-template-columns: repeat(24, 1.5rem);
     grid-template-rows: repeat(16, 1.5rem);
-    
+
     background-color: var(--color-1);
 }
 .snake-box {
-    border: 1px solid black;
-    background-color: var(--color-1) !important;
+    border: 1px solid rgb(207, 207, 207);
+    background-color: black ;
+}
+.vacio{
+    background-color: var(--color-1);
+}
+.snake{
+    background-color: var(--color-4);
+}
+.manzana{
+    background-color: var(--color-5);
 }
