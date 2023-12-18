@@ -74,8 +74,8 @@
 /*      -----------------------------------------------------------  GLOVOS  -----------------------------------------------------       */
 
 .glovo {
-    background-color: var(--color-1);
-    /*width: 80px;      Al final lo defino en el js
+    /*background-color: var(--color-1);
+    width: 80px;      Al final lo defino en el js
     height: 135px;
     border-radius: 42% 58% 47% 53% / 27% 30% 70% 73% ;*/
     position: absolute;

@@ -1,7 +1,7 @@
-import { arrayGrilla } from "./arrayGrilla";
 
 
-export const pintarGrilla = () => {
+
+export const pintarGrilla = (arrayGrilla) => {
     const grilla = document.querySelector('#grilla-snake');
     grilla.innerHTML = ''
 

@@ -1,4 +1,4 @@
-// Función que maneja el evento keydown
+// Función que manejaaba el evento keydown. Lo puse directamente en el gameSequence por no poder exportar correctamente los valores.
 
 var direction = 'right'
 export function manejarTecla(event) {
@@ -20,9 +20,6 @@ export function manejarTecla(event) {
             // Si la tecla no es una flecha, no hacemos nada
             return;
     }
-    console.log(direction)
     return direction
-
 }
-
 export default direction;

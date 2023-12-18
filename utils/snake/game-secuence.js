@@ -1,13 +1,26 @@
-import { arrayGrilla } from "./arrayGrilla";
+import { arrayGrillaLvl1 } from "./arrayGrillaLvl1";
+import { arrayGrillaLvl2 } from "./arrayGrillaLvl2";
+import { arrayGrillaLvl3 } from "./arrayGrillaLvl3";
+import { arrayGrillaLvl4 } from "./arrayGrillaLvl4";
 import { mostrarPuntos } from "./mostrarPuntos";
 // import direction, { manejarTecla } from "./manejarTecla";
 import { pintarGrilla } from "./pintarGrilla";
 
-export const gameSecuence = () => {
+export const gameSecuence = (mode) => {
     console.log('game secuence activado');
 
-    // Por un lado necesitamos una variable que pueda tomar 4 valores en funcion de las flechas que se toquen;
+    // Puntaje, que se irá sumando 1 cada vez que coma una manzana. Además determinará en que nivel estamos jugando!
+    let puntos = 0;
+    let puntosParaPasarDeNivel = 5;
+    let cantidadDeNiveles = 4;
 
+    // En qué nivel estamos?
+
+    let arrayGrilla = []
+
+
+    // CAPTURAR LAS FLECHAS DE DIRECCION
+    // Por un lado necesitamos una variable que pueda tomar 4 valores en funcion de las flechas que se toquen;
     // Agregarel escuchador de eventos para el evento keydown. la function manejarTecla ya está definida, y nos devuelve una variable direction uo down left o right
 
     let direction = 'right'
@@ -39,18 +52,27 @@ export const gameSecuence = () => {
                 // Si la tecla no es una flecha, no hacemos nada
                 return;
         }
-        console.log('has pulsado la flecha: ' + direction)
     }
     document.body.addEventListener("keydown", manejarTecla);
     //console.log('La dirección del snake es: '+direction)
 
 
+    // -----------------------      VELOCIDAD DEL JUEGO!!!      -------
 
+    const velocidadInicial = 200;
+    const factorDeAumento = 0.2;
+
+    // Cada 4 niveles completos, le aplica el factor de correción 1 vez
+
+    let velocidadDelJuego = velocidadInicial - velocidadInicial * factorDeAumento * Math.floor(puntos / (puntosParaPasarDeNivel * cantidadDeNiveles))
 
     // -----------------------------        SET INTERVAL        ------------------------------
 
     // Necesitamos una función que cada x tiempo haga lo siguiente:   
     let intervalSecuence = function () {
+
+        // Chequear, si estamos en regular mode, si no pasamos de nivel, y redefinir la grilla
+
         //      repintar el mapa / grilla -> mostrar una nueva manzana si no hay ninguna, sumar un punto si comió una.
         //      Para esto necesitamos una nueva function que detecte en qué espacios puede aparecer la nueva manzana (que no haya ni snake ni muros)
         //      repintar el snake -> moverla alargarla si es necesario (y repintar los puntos para que se actualicen)
@@ -58,11 +80,41 @@ export const gameSecuence = () => {
         //      Chequear que no se haya dado contra un muro o con sigo misma
         //console.log('dentro del interval');
 
+
+
+        //      -------------------------------       SELECTOR DE NIVELES      --------------------------------       //
+
+
+        if (mode = 'regular') {
+            //console.log('regular mode!');
+            let puntosPorVueltaCompleta = puntosParaPasarDeNivel * cantidadDeNiveles;
+
+            let puntosEnEstaVuelta = puntos;
+
+            while (puntos > puntosPorVueltaCompleta) {
+                puntosEnEstaVuelta = puntos - puntosPorVueltaCompleta
+            }
+            console.log(puntosEnEstaVuelta);
+            if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 0 && puntos < puntosParaPasarDeNivel * 1) {
+                arrayGrilla = arrayGrillaLvl1;
+                //console.log('lvl 1!');
+            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 1 && puntos < puntosParaPasarDeNivel * 2) {
+                arrayGrilla = arrayGrillaLvl2;
+                //console.log('lvl 2!');
+            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 2 && puntos < puntosParaPasarDeNivel * 3) {
+                arrayGrilla = arrayGrillaLvl3;
+            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 3 && puntos < puntosParaPasarDeNivel * 4) {
+                arrayGrilla = arrayGrillaLvl4;
+            }
+
+        }
+
         // Mover el snake:
 
-        // Para eso vamos a obtener la cabeza y la cola, que son las dos partes que se modifican, y long que será el puntaje!
+        // Para eso vamos a obtener la cabeza y la cola, que son las dos partes que se modifican, y largo, que determina el puntaje!
         let cabeza;
         let largo = 0;
+
         let cola;
         let proximaCabeza = [];
         for (let i = 0; i < arrayGrilla.length; i++) {
@@ -71,46 +123,29 @@ export const gameSecuence = () => {
                 if (arrayGrilla[i][j].endsWith(' 1')) {
                     cabeza = [i, j]
                 }
-                // encontrar la cola actual
-
-                // Suplantando en Prueba:   
-                /*if (arrayGrilla[i][j].split(" ")[1] >= largo) {
-                    console.log('Cola actual: ' + arrayGrilla[i][j].split(" "))
-                    largo = arrayGrilla[i][j].split(" ")[1];
-                    cola = [i, j]
-                }*/
             }
         }
 
-        // Inicio prueba
-        
 
         const resultadoMaxNum = arrayGrilla.reduce((maximoInfo, subarray, subarrayIndex) => {
             const maximoSubarray = subarray.reduce((subarrayMaximo, cadena, cadenaIndex) => {
-              const match = cadena.match(/(\d+)$/);
-          
-              if (match) {
-                const numero = parseInt(match[1], 10);
-                if (!isNaN(numero) && numero > subarrayMaximo.valor) {
-                  return { valor: numero, ubicacion: { subarray: subarrayIndex, cadena: cadenaIndex } };
+                const match = cadena.match(/(\d+)$/);
+
+                if (match) {
+                    const numero = parseInt(match[1], 10);
+                    if (!isNaN(numero) && numero > subarrayMaximo.valor) {
+                        return { valor: numero, ubicacion: { subarray: subarrayIndex, cadena: cadenaIndex } };
+                    }
                 }
-              }
-          
-              return subarrayMaximo;
+
+                return subarrayMaximo;
             }, maximoInfo);
-          
+
             return maximoSubarray;
-          }, { valor: -Infinity, ubicacion: { subarray: -1, cadena: -1 } });
-          largo = resultadoMaxNum.valor;
-          cola = [resultadoMaxNum.ubicacion.subarray,resultadoMaxNum.ubicacion.cadena]
+        }, { valor: -Infinity, ubicacion: { subarray: -1, cadena: -1 } });
+        largo = resultadoMaxNum.valor;
+        cola = [resultadoMaxNum.ubicacion.subarray, resultadoMaxNum.ubicacion.cadena]
 
-        //console.log('El valor máximo en el array de arrays es:', largo);
-
-        //Fin Prueba
-
-        /*console.log('coordenadas de la cabeza: ' + cabeza);
-        console.log('coordenadas de la cola: ' + cola);
-        console.log('largo/puntos: ' + largo);*/
 
         // ------------------------------------------                    MOVIMIENTO                 ----------------------------------- //
 
@@ -130,7 +165,7 @@ export const gameSecuence = () => {
                 }
             }
         }
-        
+
 
         // Definimos la próxima cabeza
 
@@ -183,14 +218,16 @@ export const gameSecuence = () => {
         // Definimos la función para que aparezca una nueva manzana. Ésta se llama a si misma si resulta que da con una casilla ya ocupada.
         const crearNuevaManzana = () => {
             let coordenadasNuevaManzana = [Math.floor(Math.random() * arrayGrilla.length), Math.floor(Math.random() * arrayGrilla[0].length)];
-            if (arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] = " ") {
+            if (arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] === " ") {
                 arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] = 'manzana';
-                console.log('Nueva Manzana: ' + coordenadasNuevaManzana);
+                //console.log('Nueva Manzana: ' + coordenadasNuevaManzana);
             } else {
                 crearNuevaManzana()
             }
         }
 
+
+        //      ------------------------        CHOCA CON ALGO????        -----------------------
         // Comprobaciones del box de PROXIMA CABEZA:
         if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === " ") {
 
@@ -199,9 +236,11 @@ export const gameSecuence = () => {
         } else if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === 'manzana') {
             // Si come manzana, que aparezca una nueva y no borre cola.
             crearNuevaManzana();
+            puntos++;
 
         } else {
             // Si CHOCA CON ALGO
+            console.log('Has chocado con ' + arrayGrilla[proximaCabeza[0]][proximaCabeza[1]]);
             arrayGrilla[cola[0]][cola[1]] = " "; // Borramos la cola
 
             // Momentaneamente mostramos un ALERT
@@ -219,14 +258,13 @@ export const gameSecuence = () => {
         arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] = 'snake 1'
 
 
-        mostrarPuntos(largo);
-        pintarGrilla()
-
-
+        mostrarPuntos(puntos);
+        pintarGrilla(arrayGrilla)
 
 
     }
-    let gameInterval = setInterval(intervalSecuence, 150)
+    let gameInterval = setInterval(intervalSecuence, velocidadDelJuego)
+
 
 
 

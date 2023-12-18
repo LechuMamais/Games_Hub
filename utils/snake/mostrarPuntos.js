@@ -1,11 +1,9 @@
 import { puntosJugador } from "./puntosJugador";
 
-export const mostrarPuntos = (largo)=>{
-let puntos;
-    if (largo === undefined){
+export const mostrarPuntos = (puntos)=>{
+
+    if (puntos === undefined){
         puntos = 0
-    }else{
-        puntos = largo-3
     }
         
     

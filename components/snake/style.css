@@ -21,3 +21,19 @@
 .manzana{
     background-color: var(--color-5);
 }
+#buttons-container{
+    padding: 1rem 0rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+}
+#start-snake-button-regular,
+#start-snake-button-linear{
+    min-width: 321px;
+    padding: 0.5rem 3rem;
+    color: var(--color-dark);
+    font-size: 20px;
+
+}
