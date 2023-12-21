@@ -1,6 +1,7 @@
 #espacio-whac {
     width: 80svw;
     min-width: 500px;
+    max-width: 800px;
     height: 80svh;
     min-height: 600px;
     background-color: var(--color-2);

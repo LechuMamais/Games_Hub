@@ -26,7 +26,7 @@ export const snake = () => {
     startSnakeButtonLinearMode.id = 'start-snake-button-linear';
     startSnakeButtonLinearMode.textContent = 'Start Linear Mode';
     startSnakeButtonLinearMode.addEventListener('click', function () {
-        gameSecuence()
+        gameSecuence('linear')
     });
     buttonsContainer.appendChild(startSnakeButtonLinearMode)
 

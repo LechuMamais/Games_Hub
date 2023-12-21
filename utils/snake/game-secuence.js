@@ -11,7 +11,7 @@ export const gameSecuence = (mode) => {
 
     // Puntaje, que se irá sumando 1 cada vez que coma una manzana. Además determinará en que nivel estamos jugando!
     let puntos = 0;
-    let puntosParaPasarDeNivel = 5;
+    let puntosParaPasarDeNivel = 3;
     let cantidadDeNiveles = 4;
 
     // En qué nivel estamos?
@@ -56,6 +56,17 @@ export const gameSecuence = (mode) => {
     document.body.addEventListener("keydown", manejarTecla);
     //console.log('La dirección del snake es: '+direction)
 
+    //  --------------------        FUNCION DE CREAR MANZANA        -------
+    // Definimos la función para que aparezca una nueva manzana. Ésta se llama a si misma si resulta que da con una casilla ya ocupada.
+    const crearNuevaManzana = () => {
+        let coordenadasNuevaManzana = [Math.floor(Math.random() * arrayGrilla.length), Math.floor(Math.random() * arrayGrilla[0].length)];
+        if (arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] === " ") {
+            arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] = 'manzana';
+            //console.log('Nueva Manzana: ' + coordenadasNuevaManzana);
+        } else {
+            crearNuevaManzana()
+        }
+    }
 
     // -----------------------      VELOCIDAD DEL JUEGO!!!      -------
 
@@ -84,6 +95,9 @@ export const gameSecuence = (mode) => {
 
         //      -------------------------------       SELECTOR DE NIVELES      --------------------------------       //
 
+        // El selector de niveles se volviió bastante complejo. La idea es que cada x puntos cambie de nivel y vaya pasando entre los 4 niveles, y que cuando
+        // termine con el cuarto, vuelva a comenzar con el primero pero con un poco más de velocidad.
+        // Además, por facilidad y jugabilidad, que con cada nuevo nivel se resetee la direction hacia la derecha.
 
         if (mode = 'regular') {
             //console.log('regular mode!');
@@ -91,35 +105,45 @@ export const gameSecuence = (mode) => {
 
             let puntosEnEstaVuelta = puntos;
 
-            while (puntos > puntosPorVueltaCompleta) {
+            while (puntosEnEstaVuelta >= puntosPorVueltaCompleta) {
                 puntosEnEstaVuelta = puntos - puntosPorVueltaCompleta
             }
-            console.log(puntosEnEstaVuelta);
-            if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 0 && puntos < puntosParaPasarDeNivel * 1) {
+            //console.log(puntosPorVueltaCompleta);
+            //console.log(puntosEnEstaVuelta);
+            if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 0 && puntosEnEstaVuelta < puntosParaPasarDeNivel * 1) {
                 arrayGrilla = arrayGrillaLvl1;
+                //direction = 'right';
                 //console.log('lvl 1!');
-            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 1 && puntos < puntosParaPasarDeNivel * 2) {
+            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 1 && puntosEnEstaVuelta < puntosParaPasarDeNivel * 2) {
                 arrayGrilla = arrayGrillaLvl2;
+                //direction = 'right';
                 //console.log('lvl 2!');
-            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 2 && puntos < puntosParaPasarDeNivel * 3) {
+            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 2 && puntosEnEstaVuelta < puntosParaPasarDeNivel * 3) {
                 arrayGrilla = arrayGrillaLvl3;
-            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 3 && puntos < puntosParaPasarDeNivel * 4) {
+                //direction = 'right';
+            } else if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 3 && puntosEnEstaVuelta < puntosParaPasarDeNivel * 4) {
                 arrayGrilla = arrayGrillaLvl4;
+                //direction = 'right';
             }
 
         }
+        /*if(mode = 'linear'){
+            arrayGrilla= arrayGrillaLvl1
+        }*/
+        //pintarGrilla(arrayGrilla);
+
+        // Dibujamos una manzana en caso de que no haya:
+
 
         // Mover el snake:
 
-        // Para eso vamos a obtener la cabeza y la cola, que son las dos partes que se modifican, y largo, que determina el puntaje!
+        // Para eso vamos a obtener la cabeza y la cola, que son las dos partes que se modifican!
         let cabeza;
-        let largo = 0;
-
         let cola;
         let proximaCabeza = [];
         for (let i = 0; i < arrayGrilla.length; i++) {
             for (let j = 0; j < arrayGrilla[i].length; j++) {
-                // encontrar la cabeza actual
+                // encontrar las coordenadas de la cabeza actual
                 if (arrayGrilla[i][j].endsWith(' 1')) {
                     cabeza = [i, j]
                 }
@@ -127,6 +151,8 @@ export const gameSecuence = (mode) => {
         }
 
 
+
+        // Encontrar la COLA:
         const resultadoMaxNum = arrayGrilla.reduce((maximoInfo, subarray, subarrayIndex) => {
             const maximoSubarray = subarray.reduce((subarrayMaximo, cadena, cadenaIndex) => {
                 const match = cadena.match(/(\d+)$/);
@@ -143,7 +169,7 @@ export const gameSecuence = (mode) => {
 
             return maximoSubarray;
         }, { valor: -Infinity, ubicacion: { subarray: -1, cadena: -1 } });
-        largo = resultadoMaxNum.valor;
+
         cola = [resultadoMaxNum.ubicacion.subarray, resultadoMaxNum.ubicacion.cadena]
 
 
@@ -158,7 +184,6 @@ export const gameSecuence = (mode) => {
 
                     // Tomamos ese numero y lo convertimos a tipo number
                     let snakeBoxNumeration = parseInt(arrayGrilla[i][j].split(" ")[1]);
-                    //console.log(snakeBoxNumeration);
                     // Lo redefinimos y le sumamos 1, convirtiendolo a string
                     arrayGrilla[i][j] = arrayGrilla[i][j].split(" ")[0] + " " + (snakeBoxNumeration + 1).toString();
 
@@ -215,39 +240,49 @@ export const gameSecuence = (mode) => {
 
         // Si la proxima cabeza no coincide con una manzana, que borre la cola.
         // Pero si coincide con una manzana, que aparezca una nueva
-        // Definimos la función para que aparezca una nueva manzana. Ésta se llama a si misma si resulta que da con una casilla ya ocupada.
-        const crearNuevaManzana = () => {
-            let coordenadasNuevaManzana = [Math.floor(Math.random() * arrayGrilla.length), Math.floor(Math.random() * arrayGrilla[0].length)];
-            if (arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] === " ") {
-                arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] = 'manzana';
-                //console.log('Nueva Manzana: ' + coordenadasNuevaManzana);
-            } else {
-                crearNuevaManzana()
-            }
-        }
+
 
 
         //      ------------------------        CHOCA CON ALGO????        -----------------------
         // Comprobaciones del box de PROXIMA CABEZA:
         if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === " ") {
-
             // Si está vacío, borrar la cola, que ya tenemos capturadas sus coordenadas:
             arrayGrilla[cola[0]][cola[1]] = " ";
         } else if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === 'manzana') {
-            // Si come manzana, que aparezca una nueva y no borre cola.
+            // Si come manzana, que aparezca una nueva, sume un punto y no borre cola.
             crearNuevaManzana();
             puntos++;
+        } else /*if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] != " " && puntos % puntosParaPasarDeNivel === 0) {
+            // Si acaba de pasar de nivel, que no choque con nada!(arraglando un pequeño bug)
+            console.log('Pasaste de nivel!')
+        } else */if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] == "muro" || arrayGrilla[proximaCabeza[0]][proximaCabeza[1]].split(" ")[0] == "snake") {
+                // Si CHOCA CON ALGO, sea muro o sea consigo mismo
+                console.log('Has chocado con ' + arrayGrilla[proximaCabeza[0]][proximaCabeza[1]]);
+                arrayGrilla[cola[0]][cola[1]] = " "; // Borramos la cola
 
-        } else {
-            // Si CHOCA CON ALGO
-            console.log('Has chocado con ' + arrayGrilla[proximaCabeza[0]][proximaCabeza[1]]);
-            arrayGrilla[cola[0]][cola[1]] = " "; // Borramos la cola
 
-            // Momentaneamente mostramos un ALERT
-            alert('Has perdido');
-            // Y cortamos la ejecución
-            clearInterval(gameInterval);
-        }
+                // PERDISTE!!!
+                // Momentaneamente mostramos un ALERT
+                //alert('Has perdido');
+
+
+                function hasPerdido() {
+                    let text = ('Has perdido! Quieres comenzar de nuevo?');
+                    if (confirm(text)==true){
+                        gameSecuence()
+                    }else{
+                        window.location.reload()
+                    }
+                }
+                hasPerdido()
+
+                //
+
+
+
+                // Y cortamos la ejecución
+                clearInterval(gameInterval);
+            }
 
 
 
@@ -259,7 +294,7 @@ export const gameSecuence = (mode) => {
 
 
         mostrarPuntos(puntos);
-        pintarGrilla(arrayGrilla)
+        pintarGrilla(arrayGrilla);
 
 
     }
