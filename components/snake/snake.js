@@ -15,17 +15,22 @@ export const snake = () => {
     buttonsContainer.id = 'buttons-container';
 
     const startSnakeButton = document.createElement('button');
+    const startSnakeButtonLinearMode = document.createElement('button');
     startSnakeButton.id = 'start-snake-button-regular';
     startSnakeButton.textContent = 'Start Regular Mode';
     startSnakeButton.addEventListener('click', function () {
+        startSnakeButton.disabled = true;
+        startSnakeButtonLinearMode.disabled = true;
         gameSecuence('regular')
     });
     buttonsContainer.appendChild(startSnakeButton)
 
-    const startSnakeButtonLinearMode = document.createElement('button');
+    
     startSnakeButtonLinearMode.id = 'start-snake-button-linear';
     startSnakeButtonLinearMode.textContent = 'Start Linear Mode';
     startSnakeButtonLinearMode.addEventListener('click', function () {
+        startSnakeButton.disabled = true;
+        startSnakeButtonLinearMode.disabled = true;
         gameSecuence('linear')
     });
     buttonsContainer.appendChild(startSnakeButtonLinearMode)
