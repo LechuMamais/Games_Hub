@@ -10,7 +10,7 @@
 }
 .snake-box {
     border: 1px solid rgb(207, 207, 207);
-    background-color: black ;
+    /*background-color: black;*/
 }
 .vacio{
     background-color: var(--color-1);
@@ -19,7 +19,14 @@
     background-color: var(--color-4);
 }
 .manzana{
-    background-color: var(--color-5);
+    /*background-color: var(--color-5);*/
+    background-image: url("../../assets/snake/manzana.png");
+    background-size: 100%;
+}
+.muro{
+    background-color: rgb(111, 48, 48);
+    background-image: url("../../assets/snake/muro.webp");
+    background-size: 450%;
 }
 #buttons-container{
     padding: 1rem 0rem;

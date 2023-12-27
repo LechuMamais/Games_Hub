@@ -24,6 +24,8 @@ export const pintarGrilla = (arrayGrilla) => {
                 cuadradito.classList.add('snake')
             } else if (kindOfBox == "manzana") {
                 cuadradito.classList.add('manzana')
+            }else if (kindOfBox == "muro") {
+                cuadradito.classList.add('muro')
             }
 
             grilla.appendChild(cuadradito);

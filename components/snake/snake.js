@@ -6,7 +6,8 @@ import './style.css'
 
 export const snake = () => {
 
-    //      hasta la linea 40 aprox esta prácticamente copiado de tres en linea.
+
+    let gameMode;
 
     let div = document.querySelector('#game_section');
 
@@ -19,19 +20,20 @@ export const snake = () => {
     startSnakeButton.id = 'start-snake-button-regular';
     startSnakeButton.textContent = 'Start Regular Mode';
     startSnakeButton.addEventListener('click', function () {
+        gameMode = 'regular';
         startSnakeButton.disabled = true;
         startSnakeButtonLinearMode.disabled = true;
-        gameSecuence('regular')
+        gameSecuence(gameMode)
     });
     buttonsContainer.appendChild(startSnakeButton)
-
     
     startSnakeButtonLinearMode.id = 'start-snake-button-linear';
     startSnakeButtonLinearMode.textContent = 'Start Linear Mode';
     startSnakeButtonLinearMode.addEventListener('click', function () {
+        gameMode = 'linear';
         startSnakeButton.disabled = true;
         startSnakeButtonLinearMode.disabled = true;
-        gameSecuence('linear')
+        gameSecuence(gameMode)
     });
     buttonsContainer.appendChild(startSnakeButtonLinearMode)
 

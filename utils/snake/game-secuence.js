@@ -6,12 +6,12 @@ import { mostrarPuntos } from "./mostrarPuntos";
 // import direction, { manejarTecla } from "./manejarTecla";
 import { pintarGrilla } from "./pintarGrilla";
 
-export const gameSecuence = (mode) => {
+export const gameSecuence = (gameMode) => {
     console.log('game secuence activado');
 
     // Puntaje, que se irá sumando 1 cada vez que coma una manzana. Además determinará en que nivel estamos jugando!
     let puntos = 0;
-    let puntosParaPasarDeNivel = 3;
+    let puntosParaPasarDeNivel = 5;
     let cantidadDeNiveles = 4;
 
     // En qué nivel estamos?
@@ -67,7 +67,7 @@ export const gameSecuence = (mode) => {
                 hayManzana = true
             }
         }
-        if (hayManzana === false) {
+        if (!hayManzana) {
             // Después, ubicarla de forma random. Si da un espacio ya ocupado, se vuelve a ejecutar la función hasta dar con un espacio vacio
             let coordenadasNuevaManzana = [Math.floor(Math.random() * arrayGrilla.length), Math.floor(Math.random() * arrayGrilla[0].length)];
             if (arrayGrilla[coordenadasNuevaManzana[0]][coordenadasNuevaManzana[1]] === " ") {
@@ -92,7 +92,7 @@ export const gameSecuence = (mode) => {
 
     // -----------------------      VELOCIDAD DEL JUEGO!!!      ------------------------------ //
     const velocidadInicial = 200;
-    const factorDeAumento = 0.5;
+    const factorDeAumento = 0.3;
 
     // Cada 4 niveles completos, le aplica el factor de correción 1 vez
 
@@ -122,7 +122,6 @@ export const gameSecuence = (mode) => {
         //console.log('dentro del interval');
 
 
-
         //      -------------------------------       SELECTOR DE NIVELES      --------------------------------       //
 
         // El selector de niveles se volviió bastante complejo. La idea es que cada x puntos cambie de nivel y vaya pasando entre los 4 niveles, y que cuando
@@ -148,14 +147,16 @@ export const gameSecuence = (mode) => {
             }
         }
 
-        if (mode = 'regular') {
+        if (gameMode === 'regular') {
             //console.log('regular mode!');
             let puntosPorVueltaCompleta = puntosParaPasarDeNivel * cantidadDeNiveles;
             let puntosEnEstaVuelta = puntos;
 
             while (puntosEnEstaVuelta >= puntosPorVueltaCompleta) {
-                puntosEnEstaVuelta = puntos - puntosPorVueltaCompleta
+                puntosEnEstaVuelta = puntosEnEstaVuelta - puntosPorVueltaCompleta
+                console.log(puntosEnEstaVuelta);
             }
+            console.log(puntosEnEstaVuelta);
 
             if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 0 && puntosEnEstaVuelta < puntosParaPasarDeNivel * 1) {
                 arrayGrilla = arrayGrillaLvl1;
@@ -171,10 +172,11 @@ export const gameSecuence = (mode) => {
                 pintarNuevoSnake()
             }
         }
-        /*if(mode = 'linear'){
-            arrayGrilla= arrayGrillaLvl1
-        }*/
-        //pintarGrilla(arrayGrilla);
+        else if(gameMode === 'linear'){
+            arrayGrilla= arrayGrillaLvl1;
+            pintarNuevoSnake()
+        }
+
 
         // ------------------------------------------                    MOVIMIENTO                 ----------------------------------- //
 
@@ -266,7 +268,7 @@ export const gameSecuence = (mode) => {
             arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] = "snake 1"
             crearNuevaManzana();
             puntos++;
-            // Si al sumar este punto pasa de nivel, que borre el snake. Luego pintará uno nuevo al mostrar el nivel nuevo.
+            // Si al sumar este punto PASA DE NIVEL, que borre el snake. Luego pintará uno nuevo al mostrar el nivel nuevo.
             if (puntos % puntosParaPasarDeNivel === 0) {
                 console.log('Has pasado al siguiente nivel!');
                 // Este es el momento de la secuencia del juego en donde comienza un NUEVO NIVEL.
