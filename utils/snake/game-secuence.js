@@ -92,15 +92,18 @@ export const gameSecuence = (mode) => {
 
     // -----------------------      VELOCIDAD DEL JUEGO!!!      ------------------------------ //
     const velocidadInicial = 200;
-    const factorDeAumento = 0.2;
+    const factorDeAumento = 0.5;
 
     // Cada 4 niveles completos, le aplica el factor de correción 1 vez
 
     let velocidadDelJuego = velocidadInicial - velocidadInicial * factorDeAumento * Math.floor(puntos / (puntosParaPasarDeNivel * cantidadDeNiveles))
 
-    // MIRAR
+    //  ------- CAMBIAR VELOCIDAD --------
+    // Necesitamos una función que cambie la velocidad del juego. Luego la vamos a invocar cuando se pasen todos los niveles.
     function cambiarVelocidadIntervalo(){
         clearInterval(gameInterval);
+        //velocidadDelJuego = velocidadInicial * (1/factorDeAumento)
+        velocidadDelJuego = velocidadInicial - velocidadInicial * factorDeAumento * Math.floor(puntos / (puntosParaPasarDeNivel * cantidadDeNiveles))
         setInterval(intervalSecuence, velocidadDelJuego);
     }
 
@@ -279,7 +282,7 @@ export const gameSecuence = (mode) => {
                 }
             }
             // Además, si no solo pasa de nivel, sino que da vuelta a todos los niveles, le cambiamos la velocidad del interval:
-            if(puntos === puntosParaPasarDeNivel* cantidadDeNiveles){
+            if(puntos === puntosParaPasarDeNivel * cantidadDeNiveles){
                 cambiarVelocidadIntervalo()
             }
 
