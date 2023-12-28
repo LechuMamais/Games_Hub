@@ -5,8 +5,13 @@
     display: grid;
     grid-template-columns: repeat(24, 1.5rem);
     grid-template-rows: repeat(16, 1.5rem);
-
+    padding: 1px;
+    background-color: black;
     background-color: var(--color-1);
+
+    box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
 }
 .snake-box {
     border: 1px solid rgb(207, 207, 207);
@@ -17,6 +22,7 @@
 }
 .snake{
     background-color: var(--color-4);
+    border: 1px solid rgba(0, 0, 0, 0.034);
 }
 .manzana{
     /*background-color: var(--color-5);*/
@@ -27,6 +33,7 @@
     background-color: rgb(111, 48, 48);
     background-image: url("../../assets/snake/muro.webp");
     background-size: 450%;
+    border: none;
 }
 #buttons-container{
     padding: 1rem 0rem;
@@ -43,4 +50,26 @@
     color: var(--color-dark);
     font-size: 20px;
 
+}
+
+#div-puntos-jugador-snake {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#divJugador{
+    height: 40px;
+    padding-top: 1.5rem;
+    transition: all 500ms;
+    flex-basis: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 120px;
+    background-color: transparent;
 }

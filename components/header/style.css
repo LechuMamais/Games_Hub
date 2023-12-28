@@ -18,7 +18,7 @@
 
 #games_ul>li:hover{
     background-color: var(--color-dark);
-    color: var(--color-3);
+    color: var(--color-1);
 }
 
 

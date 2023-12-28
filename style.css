@@ -12,13 +12,21 @@
   -moz-osx-font-smoothing: grayscale;
 
 
-  /*  Variables de Colores  */
+  /*  Variables de Colores  
   --color-5: #FFC09F;
   --color-4: #FFEE93;
   --color-1: #FCF5C7;
   --color-2: #A0CED9;
   --color-3: #ADF7B6;
+  --color-dark: #17333A;*/
+
+  --color-5: #FFC09F;
+  --color-4: #FFEE93;
+  --color-1: #ffffff;
+  --color-2: #A0CED9;
+  --color-3: #4a4a4a;
   --color-dark: #17333A;
+
 
 }
 

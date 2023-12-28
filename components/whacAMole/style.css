@@ -41,6 +41,7 @@
     height: 100%;
     position: relative;
     overflow: hidden;
+    background-image: url(../../assets/whacAMole/istockphoto-525876062-612x612.jpg);
 }
 
 #nubes-container {

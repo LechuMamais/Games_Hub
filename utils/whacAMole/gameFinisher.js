@@ -1,3 +1,4 @@
+import { whacAMole } from "../../components/whacAMole/whacAMole";
 import intervaloGlovos from "./gameStarter";
 
 
@@ -24,7 +25,9 @@ export const gameFinisher = () => {
     // cortar el intervalo de gameStarter
 
     // La solución fácil que se me ocurre es recargando todo el DOM
-    location.reload()
+    //clearInterval(intervaloGlovos)
+    whacAMole()
+    //location.reload()
 
     /*function detenerCreacionGlovos() {
         clearInterval(intervaloGlovos);

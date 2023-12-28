@@ -47,9 +47,9 @@ div.appendChild(buttonsContainer)
 
 
     //Mostrar estatus de Jugadores:
-    const divJugadores = document.createElement('div');
-    divJugadores.id = 'div-jugadores';
+    const divPuntosJugador = document.createElement('div');
+    divPuntosJugador.id = 'div-puntos-jugador-snake';
 
-    div.appendChild(divJugadores);
+    div.appendChild(divPuntosJugador);
     mostrarPuntos();
 }

@@ -1,3 +1,4 @@
+import { snake } from "../../components/snake/snake";
 import { arrayGrillaLvl1 } from "./arrayGrillaLvl1";
 import { arrayGrillaLvl2 } from "./arrayGrillaLvl2";
 import { arrayGrillaLvl3 } from "./arrayGrillaLvl3";
@@ -79,13 +80,57 @@ export const gameSecuence = (gameMode) => {
         }
     }
 
+    // Vamos a definir una función que, si no hay snake pintado, pinte uno. De esta manera, se va a ejecutar cuando se comience un nuevo nivel.
+    // Ademas va a pintar una nueva manzana.
+    const pintarNuevoSnake = () => {
+        //Comprobar que haya un snake en el nivel, y sino pintarlo.
+        let haySnake = false;
+        for (let i = 0; i < arrayGrilla.length; i++) {
+            if (arrayGrilla[i].includes("snake 1")) {
+                haySnake = true
+            }
+        };
+        if (haySnake === false) {
+            //le pintamos un snake de 3 de largo en el centro:
+            arrayGrilla[8][10] = "snake 3";
+            arrayGrilla[8][11] = "snake 2";
+            arrayGrilla[8][12] = "snake 1";
+        };
+        crearNuevaManzana();
+    }
+
+    function borrarSnake() {
+        for (let i = 0; i < arrayGrilla.length; i++) {
+            for (let j = 0; j < arrayGrilla[i].length; j++) {
+                if (arrayGrilla[i][j].split(" ")[0] === "snake") {
+                    arrayGrilla[i][j] = " ";
+                    console.log('snake borrado');
+                }
+            }
+        }
+    }
+
     // Funcion de PERDISTE!!!
-    function hasPerdido() {
-        let text = ('Has perdido! Quieres comenzar de nuevo?');
+    function hasPerdido(gameMode) {
+        // Cortamos la ejecución
+        clearInterval(gameInterval);
+        // Y preguntamos que hacer.
+        let text = ('Has perdido! Quieres comenzar de nuevo en modo ' + gameMode + '?\nACEPTAR para comenzar en Regular.\nCANCELAR para comenzar en Linear Mode!');
         if (confirm(text) == true) {
-            gameSecuence()
+            // Para dar la opción de volver a comenzar el juego, hay que borrar muchas cosas:
+            borrarSnake();
+            pintarNuevoSnake();
+            let gameSection = document.querySelector('#game_section');
+            gameSection.innerHTML = "";
+            console.log(gameSection);
+            snake();
+            gameMode = "regular";
+            gameSecuence(gameMode);
+
         } else {
-            window.location.reload()
+            //window.location.reload()
+            gameMode = "linear";
+            gameSecuence(gameMode);
         }
     }
 
@@ -100,7 +145,7 @@ export const gameSecuence = (gameMode) => {
 
     //  ------- CAMBIAR VELOCIDAD --------
     // Necesitamos una función que cambie la velocidad del juego. Luego la vamos a invocar cuando se pasen todos los niveles.
-    function cambiarVelocidadIntervalo(){
+    function cambiarVelocidadIntervalo() {
         clearInterval(gameInterval);
         //velocidadDelJuego = velocidadInicial * (1/factorDeAumento)
         velocidadDelJuego = velocidadInicial - velocidadInicial * factorDeAumento * Math.floor(puntos / (puntosParaPasarDeNivel * cantidadDeNiveles))
@@ -128,24 +173,7 @@ export const gameSecuence = (gameMode) => {
         // termine con el cuarto, vuelva a comenzar con el primero pero con un poco más de velocidad.
         // Además, por facilidad y jugabilidad, que con cada nuevo nivel se resetee la direction hacia la derecha.
 
-        // Vamos a definir una función que, si no hay snake pintado, pinte uno. De esta manera, se va a ejecutar cuando se comience un nuevo nivel.
-        // Ademas va a pintar una nueva manzana.
-        const pintarNuevoSnake = () => {
-            //Comprobar que haya un snake en el nivel, y sino pintarlo.
-            let haySnake = false;
-            for (let i = 0; i < arrayGrilla.length; i++) {
-                if (arrayGrilla[i].includes("snake 1")) {
-                    haySnake = true
-                }
-            }
-            if (haySnake === false) {
-                //le pintamos un snake de 3 de largo en el centro:
-                arrayGrilla[8][10] = "snake 3";
-                arrayGrilla[8][11] = "snake 2";
-                arrayGrilla[8][12] = "snake 1";
-                crearNuevaManzana();
-            }
-        }
+
 
         if (gameMode === 'regular') {
             //console.log('regular mode!');
@@ -154,9 +182,7 @@ export const gameSecuence = (gameMode) => {
 
             while (puntosEnEstaVuelta >= puntosPorVueltaCompleta) {
                 puntosEnEstaVuelta = puntosEnEstaVuelta - puntosPorVueltaCompleta
-                console.log(puntosEnEstaVuelta);
             }
-            console.log(puntosEnEstaVuelta);
 
             if (puntosEnEstaVuelta >= puntosParaPasarDeNivel * 0 && puntosEnEstaVuelta < puntosParaPasarDeNivel * 1) {
                 arrayGrilla = arrayGrillaLvl1;
@@ -172,8 +198,8 @@ export const gameSecuence = (gameMode) => {
                 pintarNuevoSnake()
             }
         }
-        else if(gameMode === 'linear'){
-            arrayGrilla= arrayGrillaLvl1;
+        else if (gameMode === 'linear') {
+            arrayGrilla = arrayGrillaLvl1;
             pintarNuevoSnake()
         }
 
@@ -269,22 +295,17 @@ export const gameSecuence = (gameMode) => {
             crearNuevaManzana();
             puntos++;
             // Si al sumar este punto PASA DE NIVEL, que borre el snake. Luego pintará uno nuevo al mostrar el nivel nuevo.
-            if (puntos % puntosParaPasarDeNivel === 0) {
+            if (gameMode == "regular" && puntos % puntosParaPasarDeNivel === 0) {
                 console.log('Has pasado al siguiente nivel!');
                 // Este es el momento de la secuencia del juego en donde comienza un NUEVO NIVEL.
                 // Entonces reconfoguramos algunas cositas como la dirección a la que se mueve, y su ubicación. Como ya tenemos más arriba una comprobación
                 // que pinta un snake si no hay ninguno (para comenzar el nivel 1) entonces con borrar el snake ya es suficiente, luego pintara otro.
                 direction = 'right';
-                for (let i = 0; i < arrayGrilla.length; i++) {
-                    for (let j = 0; j < arrayGrilla[i].length; j++) {
-                        if (arrayGrilla[i][j].split(" ")[0] === "snake") {
-                            arrayGrilla[i][j] = " ";
-                        }
-                    }
-                }
+                borrarSnake();
+
             }
             // Además, si no solo pasa de nivel, sino que da vuelta a todos los niveles, le cambiamos la velocidad del interval:
-            if(puntos === puntosParaPasarDeNivel * cantidadDeNiveles){
+            if (gameMode == "regular" && puntos === puntosParaPasarDeNivel * cantidadDeNiveles) {
                 cambiarVelocidadIntervalo()
             }
 
@@ -293,9 +314,8 @@ export const gameSecuence = (gameMode) => {
             console.log('Has chocado con ' + arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] + ' en la fila ' + proximaCabeza[0] + ', columna ' + proximaCabeza[1]);
             arrayGrilla[cola[0]][cola[1]] = " "; // Borramos la cola
 
-            hasPerdido()
-            // Y cortamos la ejecución
-            clearInterval(gameInterval);
+            hasPerdido(gameMode)
+
         } else if (arrayGrilla[proximaCabeza[0]][proximaCabeza[1]] === " ") {
             // Finalmente, si no choca con nada será borrar la cola, que ya tenemos capturadas sus coordenadas, y pintar su nueva cabeza:
             arrayGrilla[cola[0]][cola[1]] = " ";

@@ -7,12 +7,11 @@ export const mostrarPuntos = (puntos)=>{
     }
         
     
-    const divJugadores = document.querySelector('#div-jugadores');
+    const divJugadores = document.querySelector('#div-puntos-jugador-snake');
     divJugadores.innerHTML = '';
     
     const divJugador = document.createElement('div');
     divJugador.id = 'divJugador';
-    divJugador.classList.add('div-jugador');
     divJugador.innerHTML = `
         <h3>Puntos: ${puntos}</h3>
     `
