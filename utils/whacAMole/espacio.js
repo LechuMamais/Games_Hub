@@ -28,13 +28,13 @@ const cielo = document.createElement('div');
 cielo.id = 'cielo';
 const nubesContainer = document.createElement('div');
 nubesContainer.id = 'nubes-container'
-for (let i = 0; i < 9; i++) {
+/*for (let i = 0; i < 9; i++) {
     let nube = document.createElement('div');
     nube.classList.add('nube');
     nube.id = 'nube_' + i;
     nubesContainer.appendChild(nube);
 }
-cielo.appendChild(nubesContainer);
+cielo.appendChild(nubesContainer);*/
 
 espacio.appendChild(info);
 espacio.appendChild(cielo);

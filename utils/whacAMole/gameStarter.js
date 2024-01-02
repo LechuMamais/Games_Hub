@@ -16,8 +16,10 @@ export const gameStarter = () => {
     // Apagamos el startButton, el botón que dispara esta función. Lo volveremos a habilitar en gameFinisher, cuando termine el juego
     document.querySelector('#start-button').setAttribute('disabled', '');
 
+    const gameTimer = setInterval(intervaloGlovos, gameSpeed);
 
-    let gameTimer = setInterval(intervaloGlovos,gameSpeed)
 }
 
 export default intervaloGlovos
+
+//export default gameTimer;

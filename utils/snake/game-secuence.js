@@ -104,7 +104,6 @@ export const gameSecuence = (gameMode) => {
             for (let j = 0; j < arrayGrilla[i].length; j++) {
                 if (arrayGrilla[i][j].split(" ")[0] === "snake") {
                     arrayGrilla[i][j] = " ";
-                    console.log('snake borrado');
                 }
             }
         }
@@ -296,7 +295,6 @@ export const gameSecuence = (gameMode) => {
             puntos++;
             // Si al sumar este punto PASA DE NIVEL, que borre el snake. Luego pintará uno nuevo al mostrar el nivel nuevo.
             if (gameMode == "regular" && puntos % puntosParaPasarDeNivel === 0) {
-                console.log('Has pasado al siguiente nivel!');
                 // Este es el momento de la secuencia del juego en donde comienza un NUEVO NIVEL.
                 // Entonces reconfoguramos algunas cositas como la dirección a la que se mueve, y su ubicación. Como ya tenemos más arriba una comprobación
                 // que pinta un snake si no hay ninguno (para comenzar el nivel 1) entonces con borrar el snake ya es suficiente, luego pintara otro.
