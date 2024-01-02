@@ -6,8 +6,6 @@
     grid-template-columns: repeat(24, 1.5rem);
     grid-template-rows: repeat(16, 1.5rem);
     padding: 1px;
-    background-color: black;
-    background-color: var(--color-1);
 
     box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
     -webkit-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
@@ -19,13 +17,14 @@
 }
 .vacio{
     background-color: var(--color-1);
+
 }
 .snake{
     background-color: var(--color-4);
     border: 1px solid rgba(0, 0, 0, 0.034);
 }
 .manzana{
-    /*background-color: var(--color-5);*/
+
     background-image: url("../../assets/snake/manzana.png");
     background-size: 100%;
 }

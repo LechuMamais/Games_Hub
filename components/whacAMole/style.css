@@ -43,35 +43,8 @@
     height: 100%;
     position: relative;
     overflow: hidden;
-
 }
 
-#nubes-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-.nube {
-    background-color: white;
-    margin: -15px;
-    width: 130px;
-    height: 120x;
-    border-radius: 53% 47% 50% 50% / 31% 49% 51% 69%;
-
-}
-
-#nube_0 {
-    width: 180px;
-    height: 130px;
-    border-radius: 32% 68% 63% 37% / 62% 37% 63% 38%;
-}
-
-#nube_1 {
-    width: 200px;
-    height: 130px;
-    border-radius: 53% 47% 50% 50% / 31% 49% 51% 69%;
-}
 
 
 
