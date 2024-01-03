@@ -4,7 +4,7 @@ export const mostrarGlovo = () => {
     // Definimos el glovo
     const cielo = document.querySelector('#cielo')
     let glovo = document.createElement('img');
-    glovo.src = '../../assets/whacAMole/glovo.png';//assets\whacAMole\glovo.png
+    glovo.src = '/whacAMole/glovo.png';//assets\whacAMole\glovo.png
     glovo.alt = 'glovo';
     glovo.classList.add('glovo');
 
