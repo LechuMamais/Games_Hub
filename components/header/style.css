@@ -1,4 +1,16 @@
+header{
+    width: 100%;
+    display: flex;
+}
+#home-icon{
+    padding: 1rem;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+}
+
 #games_ul{
+    flex-basis: 90%;
     display: flex;
     flex-direction: row;
     height: 10svh;

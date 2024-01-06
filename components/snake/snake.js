@@ -2,9 +2,22 @@ import { arrayGrillaLvl1 } from '../../utils/snake/arrayGrillaLvl1';
 import { gameSecuence } from '../../utils/snake/game-secuence';
 import { mostrarPuntos } from '../../utils/snake/mostrarPuntos';
 import { pintarGrilla } from '../../utils/snake/pintarGrilla';
+import { showHeader } from '../header/header';
 import './style.css'
 
 export const snake = () => {
+    // Esto es para ocultar lo que haya:    
+    const divApp = document.querySelector('#app');
+    divApp.innerHTML = "";
+    // Poner el Header aca. el header tiene el boton a la home y el gamesList
+    showHeader(divApp);
+    // Y ahora creamoe la section donde se mostrará el juego
+    const game_section = document.createElement('section');
+    game_section.id = 'game_section';
+    divApp.append(game_section);
+
+    
+    // -------------------------------------------          COMIENZA EL JUEGO!          ------------------------------------------------- //
 
 
     let gameMode;
@@ -26,7 +39,7 @@ export const snake = () => {
         gameSecuence(gameMode)
     });
     buttonsContainer.appendChild(startSnakeButton)
-    
+
     startSnakeButtonLinearMode.id = 'start-snake-button-linear';
     startSnakeButtonLinearMode.textContent = 'Start Linear Mode';
     startSnakeButtonLinearMode.addEventListener('click', function () {
@@ -37,7 +50,7 @@ export const snake = () => {
     });
     buttonsContainer.appendChild(startSnakeButtonLinearMode)
 
-div.appendChild(buttonsContainer)
+    div.appendChild(buttonsContainer)
     // Creamos la grilla
     const grilla = document.createElement('div');
     grilla.id = 'grilla-snake';
