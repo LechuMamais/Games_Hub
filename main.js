@@ -1,3 +1,4 @@
+import { footer } from './components/footer/footer';
 import { home } from './components/home/home';
 import './style.css'
 
@@ -8,3 +9,4 @@ game_section.id = 'game_section';
 divApp.append(game_section);*/
 
 home(divApp);
+footer(divApp);

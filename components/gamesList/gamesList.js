@@ -2,6 +2,7 @@ import './style.css';
 import {tresEnLinea} from '../../components/tresEnLinea/tresEnLinea'
 import { whacAMole } from '../whacAMole/whacAMole';
 import { snake } from '../snake/snake';
+import { footer } from '../footer/footer';
 
 // Esta función recibe como parámetro el contenedor donde se mostrará la lista de juegos
 
@@ -17,7 +18,8 @@ export const showGamesList = (gamesListContainer) => {
     game_1_li.append(game_1_h2);
     game_1_li.onclick = () => {
         divApp.innerHTML = "";        
-        tresEnLinea()
+        tresEnLinea();
+        footer(divApp);
     }
 
     const game_2_li = document.createElement('li');
@@ -27,6 +29,7 @@ export const showGamesList = (gamesListContainer) => {
     game_2_li.onclick = () => {
         divApp.innerHTML = "";
         whacAMole();
+        footer(divApp);
     }
 
     const game_3_li = document.createElement('li');
@@ -36,6 +39,7 @@ export const showGamesList = (gamesListContainer) => {
     game_3_li.onclick = () => {
         divApp.innerHTML = "";
         snake();
+        footer(divApp);
     }
 
     // Mostramos los botones, y lo insertamos en el contenedor (que se ingresa como parámetro)

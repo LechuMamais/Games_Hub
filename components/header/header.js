@@ -1,3 +1,4 @@
+import { footer } from '../footer/footer';
 import { showGamesList } from '../gamesList/gamesList';
 import { home } from '../home/home';
 import './style.css'
@@ -19,6 +20,7 @@ export const showHeader = (headerContainer) => {
         const divApp = document.querySelector('#app');
         divApp.innerHTML = "";
         home();
+        footer(divApp);
     }
 
     header.append(home_icon);
