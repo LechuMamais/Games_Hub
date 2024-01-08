@@ -1,5 +1,6 @@
 import { arrayGrillaLvl1 } from '../../utils/snake/arrayGrillaLvl1';
 import { gameSecuence } from '../../utils/snake/game-secuence';
+import { mostrarBotonesFlechas } from '../../utils/snake/mostrarBotonesFlechas';
 import { mostrarPuntos } from '../../utils/snake/mostrarPuntos';
 import { pintarGrilla } from '../../utils/snake/pintarGrilla';
 import { showHeader } from '../header/header';
@@ -65,4 +66,5 @@ export const snake = () => {
 
     div.appendChild(divPuntosJugador);
     mostrarPuntos();
+    mostrarBotonesFlechas();
 }

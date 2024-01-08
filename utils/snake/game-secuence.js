@@ -3,6 +3,7 @@ import { arrayGrillaLvl1 } from "./arrayGrillaLvl1";
 import { arrayGrillaLvl2 } from "./arrayGrillaLvl2";
 import { arrayGrillaLvl3 } from "./arrayGrillaLvl3";
 import { arrayGrillaLvl4 } from "./arrayGrillaLvl4";
+import { mostrarBotonesFlechas } from "./mostrarBotonesFlechas";
 import { mostrarPuntos } from "./mostrarPuntos";
 // import direction, { manejarTecla } from "./manejarTecla";
 import { pintarGrilla } from "./pintarGrilla";
@@ -58,6 +59,24 @@ export const gameSecuence = (gameMode) => {
     document.body.addEventListener("keydown", manejarTecla);
     // console.log('La dirección del snake es: '+ direction);
 
+    // Lo siguiente es para dispositivos móviles, que no tienen teclado.
+    // Para eso, vamos a dibujar botones de flechas en la pantalla y ver que pasa cuando se toca una.
+
+    let IsAMovileDevice = false;
+    if (navigator.userAgent.match('/Android/i') || navigator.userAgent.match('/webOS/i') || navigator.userAgent.match('/iPhone/i') || navigator.userAgent.match('/iPad/i') || navigator.userAgent.match('/iPod/i') || navigator.userAgent.match('/BlackBerry/i') || navigator.userAgent.match('/Windows Phone/i')) {
+        IsAMovileDevice = true;
+    }
+    if (IsAMovileDevice) {
+        mostrarBotonesFlechas();
+        console.log('Dispositivo movil');
+
+    }
+    let arrowContainer = document.querySelector('#arrow-container-snake');
+    arrowContainer.addEventListener('click', function () {
+        direction = arrowContainer.classList[0];
+        
+    }
+    );
     //  --------------------        FUNCION DE CREAR MANZANA        -------------------- //
     // Definimos la función para que aparezca una nueva manzana. Ésta se llama a si misma si resulta que da con una casilla ya ocupada.
     const crearNuevaManzana = () => {

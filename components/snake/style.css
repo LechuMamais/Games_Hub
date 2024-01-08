@@ -83,6 +83,46 @@
 }
 
 
+/*----------------------------------------------    FLECHAS DE VERSION MOVIL  ------------------------------------------*/
+
+
+
+#arrow-container-snake{
+
+    margin: 2rem auto;
+    text-align: center;
+}
+.arrow{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--color-dark);
+    align-items: center;
+    cursor: pointer;
+    transition: all 500ms;
+    position: absolute;
+}
+.left{
+    right: 225px;
+    top: 575px;
+}
+.right{
+    right: 75px;
+    top: 575px;
+}
+.up{
+    right: 150px;
+    top: 525px;
+}
+.down{
+    right: 150px;
+    top: 625px;
+}
+
+
+
+
+
 /*----------------------------------------------------  RESPONSIVE  -------------------------------------------------*/
 
 
