@@ -16,7 +16,7 @@ export const snake = () => {
     game_section.id = 'game_section';
     divApp.append(game_section);
 
-    
+
     // -------------------------------------------          COMIENZA EL JUEGO!          ------------------------------------------------- //
 
 
@@ -29,7 +29,6 @@ export const snake = () => {
     buttonsContainer.id = 'buttons-container';
 
     const startSnakeButton = document.createElement('button');
-    const startSnakeButtonLinearMode = document.createElement('button');
     startSnakeButton.id = 'start-snake-button-regular';
     startSnakeButton.textContent = 'Start Regular Mode';
     startSnakeButton.addEventListener('click', function () {
@@ -38,8 +37,9 @@ export const snake = () => {
         startSnakeButtonLinearMode.disabled = true;
         gameSecuence(gameMode)
     });
-    buttonsContainer.appendChild(startSnakeButton)
+    buttonsContainer.appendChild(startSnakeButton);
 
+    const startSnakeButtonLinearMode = document.createElement('button');
     startSnakeButtonLinearMode.id = 'start-snake-button-linear';
     startSnakeButtonLinearMode.textContent = 'Start Linear Mode';
     startSnakeButtonLinearMode.addEventListener('click', function () {

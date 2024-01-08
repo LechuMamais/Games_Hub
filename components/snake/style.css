@@ -1,7 +1,26 @@
-#grilla-snake{
+#buttons-container {
+    padding: 2rem 0rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#start-snake-button-regular,
+#start-snake-button-linear {
+    min-width: 321px;
+    padding: 0.5rem 3rem;
+    color: var(--color-dark);
+    font-size: 20px;
+
+}
+
+#grilla-snake {
     width: 36rem;
     height: 24rem;
-    margin: 1.5rem auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(24, 1.5rem);
     grid-template-rows: repeat(16, 1.5rem);
@@ -11,45 +30,35 @@
     -webkit-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
     -moz-box-shadow: 8px 3px 61px -30px rgba(0, 0, 0, 1);
 }
+
 .snake-box {
     border: 1px solid rgb(207, 207, 207);
     /*background-color: black;*/
 }
-.vacio{
+
+.vacio {
     background-color: var(--color-1);
 
 }
-.snake{
+
+.snake {
     background-color: var(--color-4);
     border: 1px solid rgba(0, 0, 0, 0.034);
 }
-.manzana{
+
+.manzana {
 
     background-image: url("../../assets/snake/manzana.png");
     background-size: 100%;
 }
-.muro{
+
+.muro {
     background-color: rgb(111, 48, 48);
     background-image: url("../../assets/snake/muro.webp");
     background-size: 450%;
     border: none;
 }
-#buttons-container{
-    padding: 1rem 0rem;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-}
-#start-snake-button-regular,
-#start-snake-button-linear{
-    min-width: 321px;
-    padding: 0.5rem 3rem;
-    color: var(--color-dark);
-    font-size: 20px;
 
-}
 
 #div-puntos-jugador-snake {
     width: 100%;
@@ -60,9 +69,9 @@
     align-items: center;
 }
 
-#divJugador{
+#divJugador {
     height: 40px;
-    padding-top: 1.5rem;
+    padding-top: 3rem;
     transition: all 500ms;
     flex-basis: 300px;
     text-align: center;
@@ -71,4 +80,41 @@
     justify-content: space-around;
     border-radius: 120px;
     background-color: transparent;
+}
+
+
+/*----------------------------------------------------  RESPONSIVE  -------------------------------------------------*/
+
+
+@media (max-width: 600px) {
+    #grilla-snake {
+        width: 30rem;
+        height: 20rem;
+
+        grid-template-columns: repeat(24, 1.25rem);
+        grid-template-rows: repeat(16, 1.25rem);
+    }
+    #buttons-container >button{
+        min-width: auto;
+        padding: 0.5rem 1.5rem;
+        width: 230px !important;
+        font-size: 16px;
+    }
+    #divJugador>h3{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    #grilla-snake {
+        width: 24rem;
+        height: 16rem;
+        grid-template-columns: repeat(24, 1rem);
+        grid-template-rows: repeat(16, 1rem);
+    }
+    #buttons-container >button{
+        padding: 0.5rem 1rem;
+        width: 180px !important;
+        font-size: 14px;
+    }
 }

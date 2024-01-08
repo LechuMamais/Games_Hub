@@ -2,24 +2,20 @@
     width: 80svw;
     min-width: 500px;
     max-width: 560px;
-    height: 80svh;
-    max-height: 610px;
-    background-color: var(--color-2);
+    height: 610px;
     background-image: url(../../assets/whacAMole/istockphoto-525876062-612x612.jpg);
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     overflow: hidden;
 }
 
 #info-whac {
     width: 100%;
-    background: rgb(0,0,0);
     background: linear-gradient(0deg, rgb(157, 200, 255) 67%, rgba(0,0,0,0) 100%); 
     height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    /*background-image: linear-gradient(to bottom, #fcf5cf, #dcefcd, #bfe6d1, #aadbd7, #a0ced9);*/
 }
 
 #info-whac>li {
@@ -46,20 +42,14 @@
 }
 
 
-
-
 /*      -----------------------------------------------------------  GLOVOS  -----------------------------------------------------       */
 
 .glovo {
-    /*background-color: var(--color-1);
-    width: 80px;      Al final lo defino en el js
-    height: 135px;
-    border-radius: 42% 58% 47% 53% / 27% 30% 70% 73% ;*/
     position: absolute;
     bottom: -200px;
     animation: subir 3000ms linear;
     cursor: pointer;
-
+    user-select: none; 
 }
 
 @keyframes subir {
@@ -70,4 +60,22 @@
     100% {
         transform: translateY(-900px);
     }
+}
+
+
+
+
+/*----------------------------------------------------  RESPONSIVE  -------------------------------------------------*/
+
+
+@media (max-width: 600px) {
+    #game_section{
+        width: 100%;
+        min-width: auto ;
+    }
+    #espacio-whac{
+        scale: 0.8;
+        margin-top: -30px;
+    }
+
 }
