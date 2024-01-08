@@ -48,3 +48,6 @@ body{
 #app{
   margin: 0 auto;
 }
+@media (max-height: 800px){
+  body{overflow: scroll;}
+}
