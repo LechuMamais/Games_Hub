@@ -45,3 +45,7 @@ body{
   padding: 0;
   overflow: hidden;
 }
+#app{
+  max-width: 1300px;
+  margin: 0 auto;
+}

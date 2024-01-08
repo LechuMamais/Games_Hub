@@ -8,5 +8,6 @@ export const footer = (divApp) => {
             <li id="contacto"><a>Contacto ✉️</a></li>
         </ul>
     `
+
     divApp.append(footer)
 }

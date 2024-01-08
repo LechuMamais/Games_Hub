@@ -1,15 +1,17 @@
 #hero {
-    width: 80vw;
-    padding: 2rem 10vw;
+    width: 100%;
+    text-align: center;
+    padding: 2rem 10%;
     max-height: 90svh;
     height: 600px;
     display: flex;
-    overflow: hidden;
+
 }
 
-#hero-text{
+#hero-text {
     padding-top: 1rem;
     width: 70%;
+    max-width: 650px;
     font-size: 120px;
     text-align: center;
 }
@@ -19,6 +21,79 @@
     width: 800px;
     rotate: 35deg;
     position: absolute;
-    right: -10vw;
+    left: 50%;
     opacity: 0.8;
 }
+
+
+@media (max-width: 850px) {
+    #hero {
+        height: auto;
+        padding-bottom: 4rem;
+    }
+
+    #hero-text {
+        padding-top: 4rem;
+        width: 100%;
+        font-size: 100px;
+        max-width: 444px;
+    }
+
+    #hero-img {
+        width: 900px;
+        rotate: 35deg;
+        position: absolute;
+        top: -25%;
+        left: 33%;
+    }
+}
+
+
+@media (max-width: 650px) {
+    #hero {
+        padding-bottom: 7rem;
+    }
+
+    #hero-text {
+        padding-top: 1rem;
+        font-size: 80px;
+    }
+
+    #games_ul {
+        width: 100%;
+        min-width: auto;
+
+        flex-direction: column;
+        gap: 2rem;
+
+    }
+}
+
+    @media (max-width: 560px) {
+        #hero {
+            padding-bottom: 5rem;
+        }
+    }
+
+    @media (max-width: 500px) {
+        #hero {
+            padding-bottom: 10rem;
+        }
+
+        #hero-text {
+            font-size: 60px;
+        }
+
+        #hero-img {
+            opacity: 0.7;
+            left: -18%;
+        }
+    }
+
+    @media (max-width: 420px) {
+        #hero {
+            padding-bottom: 6rem;
+        }
+
+
+    }
