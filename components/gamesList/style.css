@@ -22,3 +22,56 @@
     color: var(--color-1);
 }
 
+/*--------------------------- Si está en el Header --------------------------------*/
+
+.list-in-header{
+    width: 88% !important;
+}
+
+@media (max-width:750px) {
+    .list-in-header{
+        min-width: auto !important;
+        flex-direction: row !important;
+    }
+    .list-in-header>li{
+        width: 150px !important;
+    }
+    .list-in-header>li>h2{
+        font-size: 19px;
+    }
+}
+
+
+
+/*--------------------------- Menu burguer --------------------------------*/
+
+#menu-burger{
+    background-image: url('hamburguesa.png');
+    margin-top: 21px;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    position: absolute;
+    right: 35px;
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width:600px) {
+    .list-in-header{
+        display: none !important;
+    }
+    #menu-burger{
+        display: block !important;
+    }
+    .show-menu{
+        height: auto !important;
+        padding-bottom: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute;
+        top: 80px;
+        width: 100% !important;
+        background-color: var(--color-white);
+    }
+}

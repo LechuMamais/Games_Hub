@@ -16,6 +16,7 @@
     text-align: center;
     font-size: 100px;
     font-weight: 600;
+    cursor: pointer;
     text-shadow: 7px 3px 11px rgba(0, 0, 0, 0.42);
     box-shadow: 8px 3px 12px -30px rgba(0, 0, 0, 0.25)inset;
     -webkit-box-shadow: 8px 3px 12px -30px rgba(0, 0, 0, 0.25)inset;
@@ -24,12 +25,10 @@
 
 .color-jugador-uno {
     color: var(--color-2);
-    ;
 }
 
 .color-jugador-dos {
     color: var(--color-5);
-    ;
 }
 
 #div-jugadores {

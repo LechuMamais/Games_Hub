@@ -6,9 +6,12 @@ import { footer } from '../footer/footer';
 
 // Esta función recibe como parámetro el contenedor donde se mostrará la lista de juegos
 
-export const showGamesList = (gamesListContainer) => {
+export const showGamesList = (gamesListContainer, isInHeader = false) => {
     //Creamos una lista con los juegos. Cada elemento será un botón que al clickarlo se limpie el game-section, y se ejecute el componente de ese juego.
     const gamesList = document.createElement('ul');
+    if (isInHeader) {
+        gamesList.classList.add('list-in-header')
+    }
     gamesList.id = 'games_ul';
     const divApp = document.querySelector('#app');
 
@@ -46,5 +49,15 @@ export const showGamesList = (gamesListContainer) => {
     gamesList.append(game_1_li);
     gamesList.append(game_2_li);
     gamesList.append(game_3_li);
-    gamesListContainer.append(gamesList)
+    gamesListContainer.append(gamesList);
+
+    // Ahora vamos a crear el menu burger, que sólo se mostrará en el responsive cuando esté en el header.
+    if(isInHeader){
+        const menuBurger = document.createElement('div');
+        menuBurger.id ='menu-burger';
+        menuBurger.onclick = () => {
+            gamesList.classList.toggle('show-menu');
+        }
+        gamesListContainer.append(menuBurger);
+    }
 }

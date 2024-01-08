@@ -25,7 +25,8 @@ export const showHeader = (headerContainer) => {
 
     header.append(home_icon);
 
-    showGamesList(header);
+    let isInHeader = true;
+    showGamesList(header, isInHeader);
 
     headerContainer.append(header);
 
