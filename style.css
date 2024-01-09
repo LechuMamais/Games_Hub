@@ -50,7 +50,9 @@ body{
 }
 @media (max-height: 800px){
   body{overflow-x: scroll;}
+  #app{overflow-y: visible;}
   #game-section{
-    overflow-x: scroll;
+    overflow-y: scroll;
   }
+  
 }
