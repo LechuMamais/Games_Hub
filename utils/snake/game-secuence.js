@@ -73,10 +73,14 @@ export const gameSecuence = (gameMode) => {
     }
     let arrowContainer = document.querySelector('#arrow-container-snake');
     arrowContainer.addEventListener('click', function () {
-        direction = arrowContainer.classList[0];
-        
-    }
-    );
+        let newDirection = arrowContainer.classList[0];
+        if (direction == 'left' && newDirection == 'right') { }
+        else if (direction == 'right' && newDirection == 'left') { }
+        else if (direction == 'up' && newDirection == 'down') { }
+        else if (direction == 'down' && newDirection == 'up') { }
+        else { direction = newDirection }
+    });
+    
     //  --------------------        FUNCION DE CREAR MANZANA        -------------------- //
     // Definimos la función para que aparezca una nueva manzana. Ésta se llama a si misma si resulta que da con una casilla ya ocupada.
     const crearNuevaManzana = () => {
