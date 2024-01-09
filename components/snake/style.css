@@ -102,6 +102,12 @@
         width: 120px;
         height: 120px;
     }
+    footer{
+        position: relative;
+    };
+    body{
+        overflow-y: scroll;
+    }
 }
 @media(max-height:700px){
     #arrow-container-snake{
