@@ -57,12 +57,11 @@ export const gameSecuence = (gameMode) => {
         }
     }
     document.body.addEventListener("keydown", manejarTecla);
-    // console.log('La dirección del snake es: '+ direction);
 
     // Lo siguiente es para dispositivos móviles, que no tienen teclado.
     // Para eso, vamos a dibujar botones de flechas en la pantalla y ver que pasa cuando se toca una.
-
-    let IsAMovileDevice = false;
+    // DE MOMENTO LO VAMOS A DEJAR COMENTADO, USAREMOS SOLO EL ANCHO DE LA PANTALLA PARA DETERMINAR SI ES MOVIL O PC
+    /*let IsAMovileDevice = false;
     if (navigator.userAgent.match('/Android/i') || navigator.userAgent.match('/webOS/i') || navigator.userAgent.match('/iPhone/i') || navigator.userAgent.match('/iPad/i') || navigator.userAgent.match('/iPod/i') || navigator.userAgent.match('/BlackBerry/i') || navigator.userAgent.match('/Windows Phone/i')) {
         IsAMovileDevice = true;
     }
@@ -70,7 +69,8 @@ export const gameSecuence = (gameMode) => {
         mostrarBotonesFlechas();
         console.log('Dispositivo movil');
 
-    }
+    }*/
+
     let arrowContainer = document.querySelector('#arrow-container-snake');
     arrowContainer.addEventListener('click', function () {
         let newDirection = arrowContainer.classList[0];

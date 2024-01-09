@@ -47,10 +47,11 @@ body{
 }
 #app{
   margin: 0 auto;
+  overflow-y: visible;
 }
 @media (max-height: 800px){
   body{overflow-x: scroll;}
-  #app{overflow-y: visible;}
+  /*#app{overflow-y: visible;}*/
   #game-section{
     overflow-y: scroll;
   }
