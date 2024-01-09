@@ -15,6 +15,7 @@
     background-color: var(--color-1);
     text-align: center;
     font-size: 100px;
+    line-height: 140px;
     font-weight: 600;
     cursor: pointer;
     text-shadow: 7px 3px 11px rgba(0, 0, 0, 0.42);
@@ -100,6 +101,11 @@
         grid-template-rows: repeat(3, 7rem);
 
     }
+    .cuadrado{
+
+        font-size: 90px;
+        line-height: 105px;
+    }
 
     #div-jugadores {
         gap: 2rem;
@@ -111,14 +117,19 @@
     #grilla {
         width: 19rem;
         height: 19rem;
-
+        margin-bottom: 0px;
         grid-template-columns: repeat(3, 6rem);
         grid-template-rows: repeat(3, 6rem);
 
     }
+    .cuadrado{
+
+        font-size: 80px;
+        line-height: 90px;
+    }
 
     #div-jugadores {
-        gap: 2rem;
-        scale: 0.6;
+        gap: 3rem;
+        scale: 0.55;
     }
 }

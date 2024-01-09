@@ -62,24 +62,14 @@
 
 #div-puntos-jugador-snake {
     width: 100%;
-    display: flex;
-    flex-direction: row;
     padding: 0;
-    justify-content: space-around;
-    align-items: center;
 }
 
 #divJugador {
     height: 40px;
     padding-top: 3rem;
     transition: all 500ms;
-    flex-basis: 300px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 120px;
-    background-color: transparent;
 }
 
 
@@ -88,9 +78,9 @@
 
 
 #arrow-container-snake {
-    width: 300px;
-    height: 300px;
-    margin: 2rem auto;
+    width: 150px;
+    height: 150px;
+    margin: 1rem auto;
     display: none;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -98,12 +88,32 @@
 }
 
 .arrow {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background-color: var(--color-dark);
     cursor: pointer;
     transition: all 500ms;
+    scale: 1.4;
+}
+/* Vamos a ajustar el tamaño de los botones en funcion de la altura de la pantalla */
+@media(max-height:750px){
+    #arrow-container-snake{
+        width: 120px;
+        height: 120px;
+    }
+}
+@media(max-height:700px){
+    #arrow-container-snake{
+        width: 110px;
+        height: 110px;
+    }
+}
+@media(max-height:650px){
+    #arrow-container-snake{
+        width: 90px;
+        height: 90px;
+    }
 }
 
 .left {
@@ -142,8 +152,10 @@
         grid-template-columns: repeat(24, 1.25rem);
         grid-template-rows: repeat(16, 1.25rem);
     }
+
     #buttons-container {
         flex-direction: row;
+        padding: 1rem 0rem;
     }
 
     #buttons-container>button {
@@ -177,4 +189,11 @@
         width: 180px !important;
         font-size: 14px;
     }
+    #divJugador {
+        padding-top: 1rem
+    }
+    #app{
+        overflow-y: scroll;
+    }
+
 }
