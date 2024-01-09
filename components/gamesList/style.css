@@ -45,7 +45,7 @@
 /*--------------------------- Menu burguer --------------------------------*/
 
 #menu-burger{
-    background-image: url('hamburguesa.png');
+    background-image: url('../../public/hamburguesa.png');
     margin-top: 21px;
     width: 40px;
     height: 40px;
