@@ -27,6 +27,12 @@
     width: 88% !important;
 }
 
+
+
+@media (max-width:768px) {
+
+}
+
 @media (max-width:750px) {
     .list-in-header{
         min-width: auto !important;
@@ -69,7 +75,7 @@
         display: flex !important;
         flex-direction: column !important;
         position: absolute;
-        top: 80px;
+        top: 62px;
         width: 100% !important;
         background-color: var(--color-white);
         z-index: 1;

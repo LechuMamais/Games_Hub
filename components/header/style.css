@@ -16,12 +16,11 @@ header {
 
 @media (max-width: 768px) {
     header {
-        height: 62px;
-
         box-shadow: 8px 3px 57px -26px rgba(0, 0, 0, 1);
         -webkit-box-shadow: 8px 3px 57px -26px rgb(0, 0, 0);
         -moz-box-shadow: 8px 3px 575px -26px rgba(0, 0, 0, 1);
     }
+
     #home-icon {
         width: 4rem;
         height: 4rem;
@@ -32,4 +31,11 @@ header {
         height: 30px;
         margin-top: 16px;
     }
+}
+
+@media (max-width:600px) {
+    header {
+        height: 62px;
+    }
+
 }
