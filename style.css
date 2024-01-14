@@ -49,6 +49,16 @@ body{
   margin: 0 auto;
   overflow-y: visible;
 }
+
+#game_section{
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center;
+  height: 88vh;
+  min-height: 480px;
+}
+
 @media (max-height: 800px){
   body{overflow-x: scroll;}
   /*#app{overflow-y: visible;}*/

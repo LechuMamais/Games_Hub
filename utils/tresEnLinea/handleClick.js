@@ -34,7 +34,6 @@ export const handleClick = (id) => {
 
         let divJugador_1 = document.querySelector('#divJugador_1');
         let divJugador_2 = document.querySelector('#divJugador_2');
-        console.log(divJugador_1);
         if(arrayJugadores[0].actual === true){
             // Probamos a ver si la transicion funciona agregando class
             divJugador_1.classList.add('div-jugador-actual');
