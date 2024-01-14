@@ -62,8 +62,8 @@ body{
 }
 
 @media (max-height: 800px){
-  /*body{overflow-y: hidden;}
-  #app{overflow-y: visible;}*/
+  /*body{overflow-y: hidden;}*/
+  #app{overflow-y: scroll;}
   #game-section{
     overflow-y: scroll;
   }
